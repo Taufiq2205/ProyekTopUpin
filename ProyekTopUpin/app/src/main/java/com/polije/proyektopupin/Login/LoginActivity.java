@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.polije.proyektopupin.Activitys.ProgramActivity;
 import com.polije.proyektopupin.ForgotPassword.ForgotpassActivity;
 import com.polije.proyektopupin.R;
 import com.polije.proyektopupin.Register.RegisterActivity;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText txt_user, txt_pass;
     TextView forgotPass, signUp;
     Button btnlogin, btngoogle;
+    String username, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         signUp = findViewById(R.id.signup);
         btnlogin = findViewById(R.id.btn_login);
         btngoogle = findViewById(R.id.btn_google);
+
+        //data dummy
+        username = "fiqoo";
+        password = "fiqo123";
 
         //aksi untuk menuju ke lupa password
         forgotPass.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +112,33 @@ public class LoginActivity extends AppCompatActivity {
                 //Menampilkan dialog
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+            }
+        });
+
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String usernameVal = txt_user.getText().toString();
+                String passwordVal = txt_pass.getText().toString();
+
+                if(usernameVal.isEmpty() || passwordVal.isEmpty()){
+                    //show text if username and password empty
+                    Toast.makeText(LoginActivity.this, "Please Fill Your Username and Password First", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    if(usernameVal.equals(username) && passwordVal.equals(password)){
+                        //show text if username and password accepted
+                        Toast.makeText(LoginActivity.this, "Login Succesfull", Toast.LENGTH_SHORT).show();
+                        //to program activity after login
+                        Intent intent = new Intent(LoginActivity.this, ProgramActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        //show text if username ora password is wrong
+                        Toast.makeText(LoginActivity.this, "Your Username or Password is Wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
