@@ -206,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="- Or Sign Up With -"
+                android:text="- Or Sign In With -"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_register" />
@@ -217,7 +217,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/white"
-                android:text="Sign Up With Google"
+                android:text="Register With Google"
                 android:textColor="@color/black"
                 app:icon="@mipmap/google_foreground"
                 app:iconGravity="start"

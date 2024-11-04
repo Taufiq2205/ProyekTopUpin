@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.polije.proyektopupin.Activitys.ProgramActivity;
 import com.polije.proyektopupin.ForgotPassword.ForgotpassActivity;
 import com.polije.proyektopupin.R;
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView forgotPass, signUp;
     Button btnlogin, btngoogle;
     String username, password;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
