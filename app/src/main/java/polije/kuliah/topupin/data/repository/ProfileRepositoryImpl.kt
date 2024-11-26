@@ -14,7 +14,7 @@ class ProfileRepositoryImpl(
 ) : ProfileRepository{
 
     override suspend fun getUserProfile(userSend: UserSend): User? {
-        return getProfileFromDB(userSend)
+        return getProfileFromAPI(userSend)
     }
 
     suspend fun getProfileFromAPI(userSend: UserSend):User?{

@@ -10,10 +10,7 @@ import polije.kuliah.topupin.presentation.di.core.DaggerAppComponent
 import polije.kuliah.topupin.presentation.di.core.DatabaseModule
 import polije.kuliah.topupin.presentation.di.core.LocalDataModule
 import polije.kuliah.topupin.presentation.di.core.NetModule
-import polije.kuliah.topupin.presentation.di.core.RemoteDataModule
 import polije.kuliah.topupin.presentation.di.user.UserSubComponent
-import polije.kuliah.topupin.presentation.user.UserViewModel
-import polije.kuliah.topupin.presentation.user.UserViewModelFactory
 
 class App : Application(), Injector {
     private lateinit var appComponent: AppComponent
