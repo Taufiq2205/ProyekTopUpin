@@ -1,5 +1,6 @@
 package polije.kuliah.topupin.presentation.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,7 @@ import polije.kuliah.topupin.R
 import polije.kuliah.topupin.data.model.UserSend
 import polije.kuliah.topupin.databinding.ActivityLoginBinding
 import polije.kuliah.topupin.presentation.Injector
+import polije.kuliah.topupin.presentation.home.MainActivity
 import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity(){
@@ -26,7 +28,8 @@ class LoginActivity : AppCompatActivity(){
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
         (application as Injector).createUserSubComponent()
             .inject(this)
-
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
 
         userViewModel = ViewModelProvider(this,factory)
             .get(UserViewModel::class.java)
@@ -40,7 +43,8 @@ class LoginActivity : AppCompatActivity(){
                 responseLiveData.observe(this, Observer {
                     try {
                         if (it != null) {
-                            Toast.makeText(applicationContext,it.toString(),Toast.LENGTH_SHORT).show()
+//                            val intent = Intent(this,MainActivity::class.java)
+//                            startActivity(intent)
                         }
                     }catch (exception:Exception){
                         Toast.makeText(applicationContext,exception.message.toString(),Toast.LENGTH_SHORT).show()
