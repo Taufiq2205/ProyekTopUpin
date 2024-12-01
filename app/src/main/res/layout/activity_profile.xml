@@ -11,12 +11,13 @@
         android:id="@+id/ivProfilePicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:src="@mipmap/ic_launcher"
         android:translationY="30dp"
         android:translationZ="1dp"
         app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,8 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="John Doe"
             android:textSize="20sp" />
 
@@ -49,8 +51,9 @@
             android:id="@+id/tvEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="johndoe@email.com"
             android:textSize="15sp" />
 
@@ -58,6 +61,7 @@
             android:id="@+id/tvPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:text="+62 812 3456 7890"
@@ -98,6 +102,7 @@
                     android:text="Cash Inflow" />
 
                 <TextView
+                    android:id="@+id/cash_inflow_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rp. 500.000" />
@@ -125,9 +130,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cash Inflow" />
+                    android:text="Cash Outflow" />
 
                 <TextView
+                    android:id="@+id/cash_outflow_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rp. 500.000" />
@@ -139,6 +145,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -153,7 +160,7 @@
             android:drawableEnd="@drawable/right_arrow"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Lorem Ipsum"
+            android:text="@string/profile_setting"
             android:textAlignment="textStart" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -164,7 +171,7 @@
             android:drawableEnd="@drawable/right_arrow"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Lorem Ipsum"
+            android:text="@string/security_setting"
             android:textAlignment="textStart" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -176,7 +183,7 @@
             android:drawableEnd="@drawable/right_arrow"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Lorem Ipsum"
+            android:text="@string/help_center"
             android:textAlignment="textStart" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -187,7 +194,7 @@
             android:drawableEnd="@drawable/right_arrow"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Lorem Ipsum"
+            android:text="@string/terms_conditions"
             android:textAlignment="textStart" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -198,8 +205,26 @@
             android:drawableEnd="@drawable/right_arrow"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Lorem Ipsum"
+            android:text="@string/privacy_policy"
             android:textAlignment="textStart" />
+
+
+
     </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_compact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border_sharp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="LOG OUT"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
