@@ -7,4 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import polije.kuliah.topupin.R
 
-class HomeFragment : Fragment(R.layout.fragment_home)
+class HomeFragment : Fragment(R.layout.fragment_home){
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+}

@@ -15,50 +15,50 @@ import polije.kuliah.topupin.presentation.Injector
 import polije.kuliah.topupin.presentation.home.MainActivity
 import javax.inject.Inject
 
-class LoginActivity : AppCompatActivity(){
-    private lateinit var userViewModel: UserViewModel
-    private lateinit var binding: ActivityLoginBinding
+class LoginActivity : AppCompatActivity() {
+
     @Inject
     lateinit var factory: UserViewModelFactory
+
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
-        (application as Injector).createUserSubComponent()
-            .inject(this)
-        val intent = Intent(this,MainActivity::class.java)
-        startActivity(intent)
+        (application as Injector).createUserSubComponent().inject(this)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
-        userViewModel = ViewModelProvider(this,factory)
+        userViewModel = ViewModelProvider(this, factory)
             .get(UserViewModel::class.java)
 
-        binding.btnLogin.setOnClickListener{
-            val usernameText  = binding.txtUsername.text.toString()
+        binding.btnLogin.setOnClickListener {
+            val usernameText = binding.txtUsername.text.toString()
             val passwordText = binding.txtPassword.text.toString()
-            if(!usernameText.isEmpty() || !passwordText.isEmpty()){
-                val responseLiveData = userViewModel.getUserProfile(UserSend(usernameText,passwordText))
 
-                responseLiveData.observe(this, Observer {
-                    try {
-                        if (it != null) {
-//                            val intent = Intent(this,MainActivity::class.java)
-//                            startActivity(intent)
+            if (usernameText.isNotEmpty() && passwordText.isNotEmpty()) {
+                userViewModel.getUserProfile(UserSend(usernameText, passwordText))
+                    .observe(this, Observer { response ->
+                        try {
+                            if (response != null) {
+                                val intent = Intent(this, MainActivity::class.java)
+                                startActivity(intent)
+                            }
+                        } catch (exception: Exception) {
+                            Toast.makeText(
+                                applicationContext,
+                                exception.message.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                    }catch (exception:Exception){
-                        Toast.makeText(applicationContext,exception.message.toString(),Toast.LENGTH_SHORT).show()
-                    }
-                })
-            }else{
-                Toast.makeText(applicationContext,"Username atau Password Tidak Boleh Kosong",Toast.LENGTH_SHORT).show()
+                    })
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    "Username atau Password Tidak Boleh Kosong",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
-
-
         }
-
-
     }
-
 }
