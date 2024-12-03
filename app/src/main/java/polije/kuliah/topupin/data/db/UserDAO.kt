@@ -15,4 +15,6 @@ interface UserDAO {
     suspend fun deleteAllUser()
     @Query("SELECT * FROM user_data WHERE username=:username")
     suspend fun getUser(username:String):User
+    @Query("SELECT * FROM user_data WHERE userId=1")
+    suspend fun getMainUser():User
 }

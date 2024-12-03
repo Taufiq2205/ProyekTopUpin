@@ -15,7 +15,10 @@ class ProfileRepositoryImpl(
 ) : ProfileRepository{
 
     override suspend fun getUserProfile(userSend: UserSend): User? {
-        return getProfileFromAPI(userSend)
+        return getProfileFromDB(userSend)
+
+    }override suspend fun getUserProfile(): User? {
+        return getProfileFromDB()
     }
 
     suspend fun getProfileFromAPI(userSend: UserSend):User?{
@@ -38,7 +41,7 @@ class ProfileRepositoryImpl(
         var userProfile:User?=null
         try {
             userProfile = userLocalDataSource.getUserFromDB(userSend.username)
-            Log.i("MyTag",userProfile.toString())
+//            Log.i("MyTag",userProfile.toString())
         }catch (exception:Exception){
             Log.i("MyTag",exception.message.toString())
         }
@@ -48,6 +51,16 @@ class ProfileRepositoryImpl(
             userProfile = getProfileFromAPI(userSend)
             userLocalDataSource.saveUserFromDB(userProfile)
         }
+        return userProfile
+    }
+    suspend fun getProfileFromDB(): User?{
+        var userProfile:User?=null
+        try {
+            userProfile = userLocalDataSource.getUserFromDB()
+        }catch (exception:Exception){
+            Log.i("MyTag",exception.message.toString())
+        }
+
         return userProfile
     }
 

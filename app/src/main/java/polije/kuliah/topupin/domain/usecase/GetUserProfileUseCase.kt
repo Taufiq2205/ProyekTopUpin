@@ -6,4 +6,5 @@ import polije.kuliah.topupin.domain.repository.ProfileRepository
 
 class GetUserProfileUseCase(private val repository: ProfileRepository) {
     suspend fun execute(userSend: UserSend): User? = repository.getUserProfile(userSend)
+    suspend fun execute(): User? = repository.getUserProfile()
 }

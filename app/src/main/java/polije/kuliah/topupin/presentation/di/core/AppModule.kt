@@ -3,10 +3,11 @@ package polije.kuliah.topupin.presentation.di.core
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import polije.kuliah.topupin.presentation.di.home.HomeSubComponent
 import polije.kuliah.topupin.presentation.di.user.UserSubComponent
 import javax.inject.Singleton
 
-@Module(subcomponents = [UserSubComponent::class])
+@Module(subcomponents = [UserSubComponent::class,HomeSubComponent::class])
 class AppModule(private val context: Context) {
     @Singleton
     @Provides

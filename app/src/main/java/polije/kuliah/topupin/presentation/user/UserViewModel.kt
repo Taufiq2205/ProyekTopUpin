@@ -12,4 +12,8 @@ class UserViewModel(
         val getUser = getUserProfileUseCase.execute(userSend)
         emit(getUser)
     }
+    fun getUserProfile() = liveData {
+        val getUser = getUserProfileUseCase.execute()
+        emit(getUser)
+    }
 }

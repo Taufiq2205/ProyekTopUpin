@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     .observe(this, Observer { response ->
                         try {
                             if (response != null) {
-                                val intent = Intent(this, RegisterActivity::class.java)
+                                val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                             }
                         } catch (exception: Exception) {

@@ -9,8 +9,13 @@ import polije.kuliah.topupin.data.model.User
 import polije.kuliah.topupin.data.repository.datasource.UserLocalDataSource
 
 class UserLocalDataSourceImpl(private val userDao:UserDAO) : UserLocalDataSource {
+
     override suspend fun getUserFromDB(userId:String): User {
         return userDao.getUser(userId)
+    }
+
+    override suspend fun getUserFromDB(): User {
+        return userDao.getMainUser()
     }
 
     override suspend fun saveUserFromDB(user: User?) {
