@@ -17,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
@@ -38,6 +40,10 @@ android {
     dataBinding{
         enable = true
     }
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
+
 }
 
 dependencies {
@@ -67,8 +73,9 @@ dependencies {
     //Dagger
     implementation ("com.google.dagger:dagger:2.52")
     kapt("com.google.dagger:dagger-compiler:2.52")
-
-
+    //DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+//    implementation("androidx.datastore:datastore:1.1.1")
 
     //Payment Gateway(Midtrans)
 //    implementation ("com.midtrans:uikit:2.0.0-SANDBOX")

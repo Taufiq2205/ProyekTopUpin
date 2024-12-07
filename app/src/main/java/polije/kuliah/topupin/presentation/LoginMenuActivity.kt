@@ -23,6 +23,7 @@ class LoginMenuActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_menulogin)
 
+
         binding.btnLogin.setOnClickListener {
 //            <Animation>
 //            toggle(!debounce)

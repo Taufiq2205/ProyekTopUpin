@@ -1,4 +1,4 @@
-package polije.kuliah.topupin.presentation.home
+package polije.kuliah.topupin.presentation.user.home
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -22,10 +22,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        (application as Injector).createHomeSubComponent().inject(this)
+        (application as Injector).createUserSubComponent().inject(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         userViewModel = ViewModelProvider(this, factory)
             .get(UserViewModel::class.java)
+
         replaceFragment(HomeFragment())
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){

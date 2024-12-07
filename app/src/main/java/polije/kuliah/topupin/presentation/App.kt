@@ -1,9 +1,6 @@
 package polije.kuliah.topupin.presentation
 
 import android.app.Application
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import polije.kuliah.topupin.data.model.UserSend
 import polije.kuliah.topupin.presentation.di.core.AppComponent
 import polije.kuliah.topupin.presentation.di.core.AppModule
 import polije.kuliah.topupin.presentation.di.core.DaggerAppComponent
@@ -12,10 +9,11 @@ import polije.kuliah.topupin.presentation.di.core.LocalDataModule
 import polije.kuliah.topupin.presentation.di.core.NetModule
 import polije.kuliah.topupin.presentation.di.home.HomeSubComponent
 import polije.kuliah.topupin.presentation.di.user.UserSubComponent
+import polije.kuliah.topupin.presentation.di.product.ProductSubComponent
 
 class App : Application(), Injector {
     private lateinit var appComponent: AppComponent
-    val baseUrl = "https://dendiistore-server.my.id"
+    val baseUrl = "https://topupin.web.id"
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()
@@ -34,10 +32,10 @@ class App : Application(), Injector {
         return appComponent.homeSubComponent().create()
     }
 
+    override fun createProductSubComponent(): ProductSubComponent {
+        return appComponent.productSubComponent().create()
+    }
 
-//    override fun createUserSubComponent(userSend: UserSend): UserSubComponent {
-//        return appComponent.userSubComponent().create(userSend)
-//    }
 
 
 }

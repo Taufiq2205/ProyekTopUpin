@@ -25,11 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.home.MainActivity"
+        <activity android:name=".presentation.user.home.MainActivity"
             android:exported="false"/>
         <activity android:name=".presentation.user.LoginActivity"
             android:exported="false"/>
         <activity android:name=".presentation.user.RegisterActivity"
+            android:exported="false"/>
+        <activity android:name=".presentation.user.ProfileSettingActivity"
             android:exported="false"/>
     </application>
 
