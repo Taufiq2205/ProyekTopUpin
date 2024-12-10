@@ -22,6 +22,10 @@ class UserRepositoryImpl(
         return getProfileFromDB()
     }
 
+    override suspend fun getUserProfileFromAPI(userLogin: UserLogin): User? {
+        return getProfileFromAPI(userLogin)
+    }
+
 
     override suspend fun updateUserProfile(userData: UserData) {
         return updateProfileFromAPI(userData)
@@ -41,9 +45,7 @@ class UserRepositoryImpl(
         try {
             val response = userRemoteDataSource.getUser(userLogin)
             val body = response.body()
-            Log.i("MyTag", "user sending : ${userLogin.toString()}")
-            Log.i("MyTag", body.toString())
-            if (body != null) {
+            if (body != null && body.status == "success") {
                 userProfile = body.user
             }
         } catch (exception: Exception) {
@@ -59,28 +61,24 @@ class UserRepositoryImpl(
             // First, check the database for the user profile
             userProfile = userLocalDataSource.getUserFromDB(userLogin.username)
 
-            // If the profile is found in the database, check if it's the same as the API data
             val checkData = getProfileFromAPI(userLogin)
 
-            if (checkData != null && checkData == userProfile) {
+            if (checkData != null && checkUser(userProfile,checkData)) {
                 // If data from API and DB are the same, log it and return the profile from DB
                 Log.i("MyTag", "The data from API and DB are the same.")
+
+                return userProfile
+            }else{
+                Log.d("MyTag","check Data : ${checkData}\nUser Profile : ${userProfile}")
+                Log.i("MyTag","The Data Override the DB")
                 userProfile = checkData
                 userLocalDataSource.clearAll()
-                // Save the new profile from API to the database
-                userLocalDataSource.saveUserFromDB(userProfile)
-                return userProfile
+                userLocalDataSource.saveUserFromDB(checkData)
             }
 
 
         } catch (exception: Exception) {
             Log.e("MyTag", "Error fetching profile: ${exception.message}")
-        }
-
-        // If userProfile is still null, fetch from API and save to DB
-        if (userProfile == null) {
-            userProfile = getProfileFromAPI(userLogin)
-            userLocalDataSource.saveUserFromDB(userProfile)
         }
 
         return userProfile
@@ -98,6 +96,10 @@ class UserRepositoryImpl(
 
         return userProfile
     }
-
+    fun checkUser(OldUser : User,newUser:User) : Boolean{
+        return OldUser.username == newUser.username
+                && OldUser.email == newUser.email
+                && OldUser.noHp == newUser.noHp
+    }
 
 }

@@ -15,7 +15,8 @@ import polije.kuliah.topupin.presentation.user.UserViewModelFactory
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+
     @Inject
     lateinit var factory: UserViewModelFactory
     private lateinit var userViewModel: UserViewModel
@@ -29,21 +30,23 @@ class MainActivity : AppCompatActivity() {
 
         replaceFragment(HomeFragment())
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.home_bar -> replaceFragment(HomeFragment())
                 R.id.profile_bar -> replaceFragment(ProfileFragment())
-                else->{
+                else -> {
 
                 }
+            }
+            true
         }
-        true
-    }
+
     }
 
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout,fragment)
-        fragmentTransaction.commit()
+        private fun replaceFragment(fragment: Fragment) {
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.frameLayout, fragment)
+            fragmentTransaction.commit()
+
     }
 }

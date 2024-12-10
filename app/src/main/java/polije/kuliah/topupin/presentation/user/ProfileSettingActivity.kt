@@ -32,8 +32,6 @@ class ProfileSettingActivity : AppCompatActivity() {
         userViewModel = ViewModelProvider(this, factory)
             .get(UserViewModel::class.java)
 
-
-
         setProfile()
         binding.btnSave.setOnClickListener {
             val name = binding.edtOldPassword.text.toString()
@@ -84,7 +82,5 @@ class ProfileSettingActivity : AppCompatActivity() {
                 binding.edtConfirmPassword.setText(user.noHp)
             }
         })
-        Log.i("MyTag", "Herro")
     }
-
 }

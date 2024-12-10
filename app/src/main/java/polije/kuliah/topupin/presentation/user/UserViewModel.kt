@@ -14,20 +14,28 @@ import polije.kuliah.topupin.domain.usecase.UpdateUserProfileUseCase
 class UserViewModel(
     private val getUserProfileUseCase: GetUserProfileUseCase,
     private val updateUserProfileUseCase: UpdateUserProfileUseCase
-) :ViewModel() {
+) : ViewModel() {
 
 
     fun getUserProfile(userLogin: UserLogin) = liveData {
         val getUser = getUserProfileUseCase.execute(userLogin)
         emit(getUser)
     }
+
     fun getUserProfile() = liveData {
         val getUser = getUserProfileUseCase.execute()
         emit(getUser)
     }
+
     fun updateProfile(userData: UserData) {
         CoroutineScope(Dispatchers.IO).launch {
             updateUserProfileUseCase.execute(userData)
         }
     }
+
+    fun getUserProfileAPI(userLogin: UserLogin) = liveData {
+        val getUser = getUserProfileUseCase.executeAPI(userLogin)
+        emit(getUser)
+    }
+
 }

@@ -6,11 +6,11 @@ import polije.kuliah.topupin.data.repository.datasource.product.ProductLocalData
 import polije.kuliah.topupin.data.repository.datasource.product.ProductRemoteDataSource
 import polije.kuliah.topupin.domain.repository.ProductRepository
 
-
 class ProductRepositoryImpl(
     private val productLocalDataSource : ProductLocalDataSource,
     private val productRemoteDataSource: ProductRemoteDataSource
 ) : ProductRepository {
+
     override suspend fun getProduct(): List<Product> {
         return getProductFromDB()
     }
@@ -29,7 +29,7 @@ class ProductRepositoryImpl(
         }
         return product
     }
-
+    
     suspend fun getProductFromDB():List<Product>{
         lateinit var product:List<Product>
         try {
@@ -45,4 +45,5 @@ class ProductRepositoryImpl(
         }
         return product
     }
+
 }

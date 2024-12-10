@@ -18,4 +18,7 @@ interface TopUpinService {
 
     @GET("api/api_produk.php")
     suspend fun getProduct() : Response<ProductList>
+
+    @GET("api/api_jenis.php")
+    suspend fun getJenis() : Response<ProductList>
 }

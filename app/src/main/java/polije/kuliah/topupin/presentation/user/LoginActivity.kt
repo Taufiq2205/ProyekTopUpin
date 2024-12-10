@@ -3,6 +3,7 @@ package polije.kuliah.topupin.presentation.user
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -57,8 +58,9 @@ class LoginActivity : AppCompatActivity() {
             }
 
             // Observe user profile and handle response
-            userViewModel.getUserProfile(UserLogin(usernameText, passwordText)).observe(this, Observer { response ->
+            userViewModel.getUserProfileAPI(UserLogin(usernameText, passwordText)).observe(this, Observer { response ->
                 if (response != null) {
+                    Log.d("MyTag","From Login Activity"+response.toString())
                     // On successful login, navigate to MainActivity
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)

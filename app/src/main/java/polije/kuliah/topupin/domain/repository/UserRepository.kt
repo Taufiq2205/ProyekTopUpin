@@ -7,5 +7,6 @@ import polije.kuliah.topupin.data.model.UserLogin
 interface UserRepository {
     suspend fun getUserProfileFromDB(userLogin: UserLogin) : User?
     suspend fun getUserProfileFromDB() : User?
+    suspend fun getUserProfileFromAPI(userLogin: UserLogin) : User?
     suspend fun updateUserProfile(userData: UserData)
 }
