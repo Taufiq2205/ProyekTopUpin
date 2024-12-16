@@ -20,6 +20,12 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var factory: UserViewModelFactory
     private lateinit var userViewModel: UserViewModel
+    override fun onDestroy() {
+        super.onDestroy()
+        userViewModel.deleteAllUser()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

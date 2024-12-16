@@ -67,7 +67,7 @@ class ProfileFragment : Fragment() {
             userViewModel.getUserProfile(UserLogin(username, password)).observe(viewLifecycleOwner, Observer { newUser ->
                 newUser?.let {
                     // Only update the UI if data has changed
-                    binding.tvName.text = it.username
+                    binding.tvName.text = it.fullName
                     binding.tvEmail.text = it.email
                     binding.tvPhoneNumber.text = it.noHp
                 } ?: run {

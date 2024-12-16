@@ -64,7 +64,7 @@ class ProfileSettingActivity : AppCompatActivity() {
     fun setProfile() {
         userViewModel.getUserProfile().observe(this, Observer { user ->
             user?.let {
-                binding.edtOldPassword.setText(user.username)
+                binding.edtOldPassword.setText(user.fullName)
                 binding.edtNewPassword.setText(user.email)
                 binding.edtConfirmPassword.setText(user.noHp)
             }

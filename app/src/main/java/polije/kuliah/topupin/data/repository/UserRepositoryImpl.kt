@@ -31,6 +31,14 @@ class UserRepositoryImpl(
         return updateProfileFromAPI(userData)
     }
 
+    override suspend fun saveUser(user: User) {
+        userLocalDataSource.saveUserFromDB(user)
+    }
+
+    override suspend fun deleleUserDatabase() {
+        userLocalDataSource.clearAll()
+    }
+
 
     suspend fun updateProfileFromAPI(userData: UserData) {
         try {
@@ -63,7 +71,7 @@ class UserRepositoryImpl(
 
             val checkData = getProfileFromAPI(userLogin)
 
-            if (checkData != null && checkUser(userProfile,checkData)) {
+            if (checkData != null && (checkUser(userProfile,checkData))) {
                 // If data from API and DB are the same, log it and return the profile from DB
                 Log.i("MyTag", "The data from API and DB are the same.")
 
@@ -100,6 +108,8 @@ class UserRepositoryImpl(
         return OldUser.username == newUser.username
                 && OldUser.email == newUser.email
                 && OldUser.noHp == newUser.noHp
+                && OldUser.fullName == newUser.fullName
     }
+
 
 }

@@ -14,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import polije.kuliah.topupin.R
+import polije.kuliah.topupin.data.model.User
 import polije.kuliah.topupin.data.model.UserLogin
 import polije.kuliah.topupin.databinding.ActivityLoginBinding
 import polije.kuliah.topupin.presentation.Injector
@@ -60,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
             // Observe user profile and handle response
             userViewModel.getUserProfileAPI(UserLogin(usernameText, passwordText)).observe(this, Observer { response ->
                 if (response != null) {
+                    userViewModel.saveUser(response)
                     Log.d("MyTag","From Login Activity"+response.toString())
                     // On successful login, navigate to MainActivity
                     val intent = Intent(this, MainActivity::class.java)
