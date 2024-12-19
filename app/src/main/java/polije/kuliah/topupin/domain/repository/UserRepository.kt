@@ -10,6 +10,7 @@ interface UserRepository {
     suspend fun getUserProfileFromDB() : User?
     suspend fun getUserProfileFromAPI(userLogin: UserLogin) : User?
     suspend fun updateUserProfile(userData: UserData)
+    suspend fun saveUser(user: User)
+    suspend fun deleleUserDatabase()
     suspend fun postUserRegister(userRegister: UserRegister)
 }
-

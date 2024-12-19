@@ -15,7 +15,7 @@ import javax.inject.Inject
 class ProductActivity : AppCompatActivity() {
     @Inject
     lateinit var factory: ProductViewModelFactory
-    private lateinit var binding: ActivityGameshopBinding
+    private lateinit var binding : ActivityGameshopBinding
     private lateinit var productViewModel: ProductViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +26,9 @@ class ProductActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_gameshop)
         productViewModel = ViewModelProvider(this, factory)
             .get(ProductViewModel::class.java)
+
+        val intent = getIntent()
+        binding.testButton.text = intent.getStringExtra("category").toString()
 
         binding.testButton.setOnClickListener {
             productViewModel.getProduct()

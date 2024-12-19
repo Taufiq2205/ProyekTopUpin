@@ -36,6 +36,14 @@ class UserRepositoryImpl(
         return postUserRegisterfromAPI(userRegister)
     }
 
+    override suspend fun saveUser(user: User) {
+        userLocalDataSource.saveUserFromDB(user)
+    }
+
+    override suspend fun deleleUserDatabase() {
+        userLocalDataSource.clearAll()
+    }
+
 
     suspend fun updateProfileFromAPI(userData: UserData) {
         try {
@@ -105,7 +113,9 @@ class UserRepositoryImpl(
         return OldUser.username == newUser.username
                 && OldUser.email == newUser.email
                 && OldUser.noHp == newUser.noHp
+                && OldUser.fullName == newUser.fullName
     }
+
 
     suspend fun postUserRegisterfromAPI(userRegister: UserRegister) {
         try {

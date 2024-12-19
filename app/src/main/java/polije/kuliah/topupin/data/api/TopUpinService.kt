@@ -4,7 +4,6 @@ import polije.kuliah.topupin.data.model.ProductList
 import polije.kuliah.topupin.data.model.UserData
 import polije.kuliah.topupin.data.model.UserList
 import polije.kuliah.topupin.data.model.UserLogin
-import polije.kuliah.topupin.data.model.UserRegister
 import retrofit2.http.POST
 import retrofit2.Response
 import retrofit2.http.Body
@@ -17,11 +16,11 @@ interface TopUpinService {
     @POST("api/edit_profile.php")
     suspend fun editProfile(@Body userData: UserData) : Response<UserList>
 
-    @GET("api/api_produk.php")
-    suspend fun getProduct() : Response<ProductList>
+    @POST("api/api_produk.php")
+    suspend fun getProduct(@Body categoryName:String) : Response<ProductList>
 
-    @GET("api/api_jenis.php")
-    suspend fun getJenis() : Response<ProductList>
+    @GET("api/api_produk.php")
+    suspend fun getJenis() : Response<JenisProduk>
 
 //    @GET("path/to/your/api/endpoint")
 //    fun getTransactions(): Response<Transaction>>

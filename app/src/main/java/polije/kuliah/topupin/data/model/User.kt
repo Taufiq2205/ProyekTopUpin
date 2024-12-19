@@ -16,5 +16,7 @@ data class User(
     @SerializedName("user_id")
     val userId: String,
     @SerializedName("username")
-    val username: String
+    val username: String,
+    @SerializedName("full_name")
+    val fullName :String
 )

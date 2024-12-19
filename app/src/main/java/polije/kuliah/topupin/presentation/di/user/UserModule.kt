@@ -2,6 +2,8 @@ package polije.kuliah.topupin.presentation.di.user
 
 import dagger.Module
 import dagger.Provides
+import polije.kuliah.topupin.domain.usecase.DeleteDatabaseUser
+import polije.kuliah.topupin.domain.usecase.GetCategoryProductUseCase
 import polije.kuliah.topupin.domain.usecase.GetUserProfileUseCase
 import polije.kuliah.topupin.domain.usecase.PostUserRegisterUseCase
 import polije.kuliah.topupin.domain.usecase.UpdateUserProfileUseCase
@@ -14,9 +16,13 @@ class UserModule {
     fun provideUserViewModelFactory(
         getUserProfileUseCase: GetUserProfileUseCase,
         updateUserProfileUseCase: UpdateUserProfileUseCase,
-        postUserRegisterUseCase: PostUserRegisterUseCase
+        postUserRegisterUseCase: PostUserRegisterUseCase,
+        updateUserProfileUseCase: UpdateUserProfileUseCase,
+        getCategoryProductUseCase: GetCategoryProductUseCase,
+        deleteDatabaseUser: DeleteDatabaseUser,
+        saveUserProfileUseCase: SaveUserProfileUseCase
     ) : UserViewModelFactory{
-        return UserViewModelFactory(getUserProfileUseCase, updateUserProfileUseCase, postUserRegisterUseCase)
+        return UserViewModelFactory(getUserProfileUseCase, updateUserProfileUseCase,getCategoryProductUseCase,deleteDatabaseUser,saveUserProfileUseCase,)
     }
 
 }

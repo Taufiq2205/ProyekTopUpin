@@ -29,9 +29,11 @@
             android:exported="false"/>
         <activity android:name=".presentation.user.LoginActivity"
             android:exported="false"/>
+        <activity android:name=".presentation.user.ProfileSettingActivity"
+            android:exported="false"/>
         <activity android:name=".presentation.user.RegisterActivity"
             android:exported="false"/>
-        <activity android:name=".presentation.user.ProfileSettingActivity"
+        <activity android:name=".presentation.product.ProductActivity"
             android:exported="false"/>
         <activity android:name=".presentation.user.RegisterActivity"
             android:exported="false"/>

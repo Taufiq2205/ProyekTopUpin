@@ -1,6 +1,7 @@
 package polije.kuliah.topupin.data.repository
 
 import android.util.Log
+import polije.kuliah.topupin.data.model.JenisProduk
 import polije.kuliah.topupin.data.model.Product
 import polije.kuliah.topupin.data.repository.datasource.product.ProductLocalDataSource
 import polije.kuliah.topupin.data.repository.datasource.product.ProductRemoteDataSource
@@ -15,10 +16,14 @@ class ProductRepositoryImpl(
         return getProductFromDB()
     }
 
+    override suspend fun getCategoryProduct(): List<String> {
+        return getCategoryProductFromAPI()
+    }
+
     suspend fun getProductFromAPI() : List<Product>{
         lateinit var product: List<Product>
         try{
-            val response = productRemoteDataSource.getUser()
+            val response = productRemoteDataSource.getProduct()
             val body = response.body()
             if(body!=null){
                 product = body.product
@@ -46,4 +51,17 @@ class ProductRepositoryImpl(
         return product
     }
 
+    suspend fun getCategoryProductFromAPI():List<String>{
+        lateinit var jenisProduk: List<String>
+        try{
+            val response = productRemoteDataSource.getCategoryProduct()
+            val body = response.body()
+            if(body!=null){
+                jenisProduk = body.data
+            }
+        }catch (e:Exception){
+            Log.i("MyTag",e.message.toString())
+        }
+        return jenisProduk
+    }
 }
