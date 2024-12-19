@@ -4,6 +4,7 @@ import android.util.Log
 import polije.kuliah.topupin.data.model.User
 import polije.kuliah.topupin.data.model.UserData
 import polije.kuliah.topupin.data.model.UserLogin
+import polije.kuliah.topupin.data.model.UserRegister
 import polije.kuliah.topupin.data.repository.datasource.user.UserLocalDataSource
 import polije.kuliah.topupin.data.repository.datasource.user.UserRemoteDataSource
 import polije.kuliah.topupin.domain.repository.UserRepository
@@ -29,6 +30,10 @@ class UserRepositoryImpl(
 
     override suspend fun updateUserProfile(userData: UserData) {
         return updateProfileFromAPI(userData)
+    }
+
+    override suspend fun postUserRegister(userRegister: UserRegister) {
+        return postUserRegisterfromAPI(userRegister)
     }
 
 
@@ -100,6 +105,14 @@ class UserRepositoryImpl(
         return OldUser.username == newUser.username
                 && OldUser.email == newUser.email
                 && OldUser.noHp == newUser.noHp
+    }
+
+    suspend fun postUserRegisterfromAPI(userRegister: UserRegister) {
+        try {
+            userRemoteDataSource.postregister(userRegister)
+        } catch (exception: Exception) {
+            Log.i("MyTag", exception.message.toString())
+        }
     }
 
 }

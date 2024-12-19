@@ -4,6 +4,7 @@ import polije.kuliah.topupin.data.model.ProductList
 import polije.kuliah.topupin.data.model.UserData
 import polije.kuliah.topupin.data.model.UserList
 import polije.kuliah.topupin.data.model.UserLogin
+import polije.kuliah.topupin.data.model.UserRegister
 import retrofit2.http.POST
 import retrofit2.Response
 import retrofit2.http.Body
@@ -21,4 +22,10 @@ interface TopUpinService {
 
     @GET("api/api_jenis.php")
     suspend fun getJenis() : Response<ProductList>
+
+//    @GET("path/to/your/api/endpoint")
+//    fun getTransactions(): Response<Transaction>>
+
+    @POST("api/api_register.php")
+    suspend fun postRegister(@Body userinfo: UserRegister)
 }

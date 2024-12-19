@@ -33,6 +33,8 @@
             android:exported="false"/>
         <activity android:name=".presentation.user.ProfileSettingActivity"
             android:exported="false"/>
+        <activity android:name=".presentation.user.RegisterActivity"
+            android:exported="false"/>
     </application>
 
 

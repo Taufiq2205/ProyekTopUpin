@@ -47,6 +47,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
     val room_version = "2.6.1"
     val lifecycle_version = "2.8.7"
     val fragment_version = "1.8.5"

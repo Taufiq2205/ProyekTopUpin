@@ -6,6 +6,7 @@ import polije.kuliah.topupin.domain.repository.ProductRepository
 import polije.kuliah.topupin.domain.repository.UserRepository
 import polije.kuliah.topupin.domain.usecase.GetProductUseCase
 import polije.kuliah.topupin.domain.usecase.GetUserProfileUseCase
+import polije.kuliah.topupin.domain.usecase.PostUserRegisterUseCase
 import polije.kuliah.topupin.domain.usecase.UpdateUserProfileUseCase
 
 
@@ -25,4 +26,10 @@ class UseCaseModule {
     fun provideGetProductUseCase(productRepository: ProductRepository):GetProductUseCase{
         return GetProductUseCase(productRepository)
     }
+
+    @Provides
+    fun providePostRegisterUseCase(userRepository: UserRepository):PostUserRegisterUseCase{
+        return PostUserRegisterUseCase(userRepository)
+    }
+
 }
