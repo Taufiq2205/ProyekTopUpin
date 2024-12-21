@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
-    id("kotlin-kapt")
+    kotlin("kapt")
 }
 
 android {
@@ -17,7 +17,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
 
     }
 
@@ -37,7 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    dataBinding{
+    dataBinding {
         enable = true
     }
     ksp {
@@ -49,7 +48,6 @@ android {
 dependencies {
     val room_version = "2.6.1"
     val lifecycle_version = "2.8.7"
-    val fragment_version = "1.8.5"
 //    val work_version = "2.9.1"
 
     //View Model

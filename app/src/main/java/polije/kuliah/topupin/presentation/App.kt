@@ -7,7 +7,6 @@ import polije.kuliah.topupin.presentation.di.core.DaggerAppComponent
 import polije.kuliah.topupin.presentation.di.core.DatabaseModule
 import polije.kuliah.topupin.presentation.di.core.LocalDataModule
 import polije.kuliah.topupin.presentation.di.core.NetModule
-import polije.kuliah.topupin.presentation.di.home.HomeSubComponent
 import polije.kuliah.topupin.presentation.di.user.UserSubComponent
 import polije.kuliah.topupin.presentation.di.product.ProductSubComponent
 
@@ -28,9 +27,7 @@ class App : Application(), Injector {
         return appComponent.userSubComponent().create()
     }
 
-    override fun createHomeSubComponent(): HomeSubComponent {
-        return appComponent.homeSubComponent().create()
-    }
+
 
     override fun createProductSubComponent(): ProductSubComponent {
         return appComponent.productSubComponent().create()

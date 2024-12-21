@@ -86,7 +86,7 @@ class HomeFragment : Fragment() {
                 "TAGIHAN"->{
                     Toast.makeText(context, "Tasgihan category clicked", Toast.LENGTH_SHORT).show()
                 }else->{
-                    Toast.makeText(context, "SEVICE NOT AVAILABLE", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "SERVICE NOT AVAILABLE", Toast.LENGTH_SHORT).show()
                 }
             }
         }

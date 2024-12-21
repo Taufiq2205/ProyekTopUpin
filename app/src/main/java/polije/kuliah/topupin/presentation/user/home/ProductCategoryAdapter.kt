@@ -16,6 +16,7 @@ class ProductCategoryAdapter : RecyclerView.Adapter<MyViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+
         val inflater = LayoutInflater.from(parent.context)
         val binding: CategoryItemBinding = DataBindingUtil.inflate(
             inflater,
@@ -36,7 +37,6 @@ class ProductCategoryAdapter : RecyclerView.Adapter<MyViewHolder>() {
     fun setOnItemClickListener(listener: (String) -> Unit) {
         this.listener = listener
     }
-
 }
 
 class MyViewHolder(val binding: CategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {

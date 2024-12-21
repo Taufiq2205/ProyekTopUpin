@@ -12,6 +12,10 @@ class ProductLocalDataSourceImpl(private val productDAO: ProductDAO) : ProductLo
         return productDAO.getAllProduct()
     }
 
+    override suspend fun getProductFromDBFilterCategory(): List<String> {
+        TODO("Product Filter Category")
+    }
+
     override suspend fun saveProductFromDB(product: List<Product>) {
         CoroutineScope(Dispatchers.IO).launch {
 
