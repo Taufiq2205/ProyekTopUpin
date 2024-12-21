@@ -1,6 +1,7 @@
 package polije.kuliah.topupin.data.api
 
 import polije.kuliah.topupin.data.model.ProductList
+import polije.kuliah.topupin.data.model.SendProduct
 import polije.kuliah.topupin.data.model.UserData
 import polije.kuliah.topupin.data.model.UserList
 import polije.kuliah.topupin.data.model.UserLogin
@@ -17,7 +18,7 @@ interface TopUpinService {
     suspend fun editProfile(@Body userData: UserData) : Response<UserList>
 
     @POST("api/api_produk.php")
-    suspend fun getProduct(@Body categoryName:String) : Response<ProductList>
+    suspend fun getProduct(@Body categoryName:SendProduct) : Response<ProductList>
 
     @GET("api/api_produk.php")
     suspend fun getJenis() : Response<JenisProduk>

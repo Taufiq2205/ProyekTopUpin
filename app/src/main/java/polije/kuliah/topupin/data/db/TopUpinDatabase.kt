@@ -10,7 +10,7 @@ import polije.kuliah.topupin.data.model.User
 
 
 @Database(entities = [User::class,Product::class],
-    exportSchema = true,
+    exportSchema = false,
     version = 1)
 abstract class TopUpinDatabase  : RoomDatabase(){
     abstract fun UserDao():UserDAO

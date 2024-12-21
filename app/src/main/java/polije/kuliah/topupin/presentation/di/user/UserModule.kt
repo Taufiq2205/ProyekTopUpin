@@ -14,7 +14,7 @@ class UserModule {
     @UserScope
     @Provides
     fun provideUserViewModelFactory(
-        getUserProfileUseCase: GetUserProfileUseCase,
+        getUserProfileUseCase: GetUserProfileUseCase,   
         updateUserProfileUseCase: UpdateUserProfileUseCase,
         postUserRegisterUseCase: PostUserRegisterUseCase,
         updateUserProfileUseCase: UpdateUserProfileUseCase,

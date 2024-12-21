@@ -14,4 +14,6 @@ interface ProductDAO {
     suspend fun deleteAllProduct()
     @Query("SELECT * FROM product_data")
     suspend fun getAllProduct() : List<Product>
+//    @Query("SELECT ")
+//    suspend fun getProductCategory():List<String>
 }
