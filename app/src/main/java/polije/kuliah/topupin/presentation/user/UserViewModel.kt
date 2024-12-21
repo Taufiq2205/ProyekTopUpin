@@ -21,11 +21,11 @@ import polije.kuliah.topupin.domain.usecase.UpdateUserProfileUseCase
 class UserViewModel(
     private val getUserProfileUseCase: GetUserProfileUseCase,
     private val updateUserProfileUseCase: UpdateUserProfileUseCase,
-    private val postUserRegisterUseCase: PostUserRegisterUseCase,
-    private val updateUserProfileUseCase: UpdateUserProfileUseCase,
     private val getCategoryProductUseCase: GetCategoryProductUseCase,
     private val deleteDatabaseUser: DeleteDatabaseUser,
-    private val saveUserProfileUseCase: SaveUserProfileUseCase
+    private val saveUserProfileUseCase: SaveUserProfileUseCase,
+    private val postUserRegisterUseCase: PostUserRegisterUseCase
+
 ) : ViewModel() {
 
 

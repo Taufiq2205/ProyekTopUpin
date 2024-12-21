@@ -6,6 +6,7 @@ import polije.kuliah.topupin.domain.usecase.DeleteDatabaseUser
 import polije.kuliah.topupin.domain.usecase.GetCategoryProductUseCase
 import polije.kuliah.topupin.domain.usecase.GetUserProfileUseCase
 import polije.kuliah.topupin.domain.usecase.PostUserRegisterUseCase
+import polije.kuliah.topupin.domain.usecase.SaveUserProfileUseCase
 import polije.kuliah.topupin.domain.usecase.UpdateUserProfileUseCase
 import polije.kuliah.topupin.presentation.user.UserViewModelFactory
 
@@ -16,13 +17,12 @@ class UserModule {
     fun provideUserViewModelFactory(
         getUserProfileUseCase: GetUserProfileUseCase,   
         updateUserProfileUseCase: UpdateUserProfileUseCase,
-        postUserRegisterUseCase: PostUserRegisterUseCase,
-        updateUserProfileUseCase: UpdateUserProfileUseCase,
         getCategoryProductUseCase: GetCategoryProductUseCase,
         deleteDatabaseUser: DeleteDatabaseUser,
-        saveUserProfileUseCase: SaveUserProfileUseCase
+        saveUserProfileUseCase: SaveUserProfileUseCase,
+        postUserRegisterUseCase: PostUserRegisterUseCase
     ) : UserViewModelFactory{
-        return UserViewModelFactory(getUserProfileUseCase, updateUserProfileUseCase,getCategoryProductUseCase,deleteDatabaseUser,saveUserProfileUseCase,)
+        return UserViewModelFactory(getUserProfileUseCase, updateUserProfileUseCase, getCategoryProductUseCase, deleteDatabaseUser,saveUserProfileUseCase, postUserRegisterUseCase)
     }
 
 }

@@ -26,7 +26,7 @@ class RegisterActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        (application as Injector).createHomeSubComponent().inject(this)
+        (application as Injector).createUserSubComponent().inject(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
         userViewModel = ViewModelProvider(this, factory)
@@ -51,7 +51,13 @@ class RegisterActivity: AppCompatActivity() {
             }
 
             userViewModel.registerUser(UserRegister(usernameText, passText, emailText, noHpText, namas))
-            Toast.makeText(this, "Registrasi berhasil!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Register Berhasil", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.signin.setOnClickListener {
+            // Navigate to the RegisterActivity (form registration)
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }

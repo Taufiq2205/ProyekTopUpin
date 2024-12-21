@@ -46,7 +46,11 @@ class LoginActivity : AppCompatActivity() {
 
             // Validate inputs first
             if (usernameText.isEmpty() || passwordText.isEmpty()) {
-                Toast.makeText(applicationContext, "Username atau Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Username atau Password Tidak Boleh Kosong",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 
@@ -57,18 +61,30 @@ class LoginActivity : AppCompatActivity() {
             }
 
             // Observe user profile and handle response
-            userViewModel.getUserProfileAPI(UserLogin(usernameText, passwordText)).observe(this, Observer { response ->
-                if (response != null) {
-                    userViewModel.saveUser(response)
-                    Log.d("MyTag","From Login Activity"+response.toString())
-                    // On successful login, navigate to MainActivity
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    // Show error if response is null
-                    Toast.makeText(applicationContext, "Login gagal, silakan coba lagi.", Toast.LENGTH_SHORT).show()
-                }
-            })
+            userViewModel.getUserProfileAPI(UserLogin(usernameText, passwordText))
+                .observe(this, Observer { response ->
+                    if (response != null) {
+                        userViewModel.saveUser(response)
+                        Log.d("MyTag", "From Login Activity" + response.toString())
+                        // On successful login, navigate to MainActivity
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        // Show error if response is null
+                        Toast.makeText(
+                            applicationContext,
+                            "Login gagal, silakan coba lagi.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        }
+
+        // Add click listener for the Sign Up TextView
+        binding.signup.setOnClickListener {
+            // Navigate to the RegisterActivity (form registration)
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }

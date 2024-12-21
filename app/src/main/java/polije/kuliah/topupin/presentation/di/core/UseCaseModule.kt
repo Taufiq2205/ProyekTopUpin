@@ -8,6 +8,8 @@ import polije.kuliah.topupin.domain.usecase.DeleteDatabaseUser
 import polije.kuliah.topupin.domain.usecase.GetCategoryProductUseCase
 import polije.kuliah.topupin.domain.usecase.GetProductUseCase
 import polije.kuliah.topupin.domain.usecase.GetUserProfileUseCase
+import polije.kuliah.topupin.domain.usecase.PostUserRegisterUseCase
+import polije.kuliah.topupin.domain.usecase.SaveUserProfileUseCase
 import polije.kuliah.topupin.domain.usecase.UpdateUserProfileUseCase
 
 
@@ -44,7 +46,7 @@ class UseCaseModule {
     }
 
     @Provides
-    fun providePostRegisterUseCase(userRepository: UserRepository):PostUserRegisterUseCase{
+    fun providePostRegisterUseCase(userRepository: UserRepository): PostUserRegisterUseCase {
         return PostUserRegisterUseCase(userRepository)
     }
 

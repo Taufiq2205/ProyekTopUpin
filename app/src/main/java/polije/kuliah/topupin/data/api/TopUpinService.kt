@@ -1,10 +1,12 @@
 package polije.kuliah.topupin.data.api
 
+import polije.kuliah.topupin.data.model.JenisProduk
 import polije.kuliah.topupin.data.model.ProductList
 import polije.kuliah.topupin.data.model.SendProduct
 import polije.kuliah.topupin.data.model.UserData
 import polije.kuliah.topupin.data.model.UserList
 import polije.kuliah.topupin.data.model.UserLogin
+import polije.kuliah.topupin.data.model.UserRegister
 import retrofit2.http.POST
 import retrofit2.Response
 import retrofit2.http.Body
